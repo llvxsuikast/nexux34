@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NexuXMarka | SorguPaneli Enterprise</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            colors: {
+                bg: {
+                    0: '#050505', // Deepest Black
+                    1: '#0A0A0C', // Panel Dark
+                    2: '#121214', // Card Surface
+                    3: '#1C1C1F', // Hover Surface
+                },
+                text: {
+                    0: '#EDEDED',
+                    1: 'rgba(237,237,237,0.8)',
+                    2: 'rgba(237,237,237,0.5)',
+                },
+                line: {
+                    0: 'rgba(255,255,255,0.08)',
+                    1: 'rgba(255,255,255,0.15)',
+                },
+                accent: {
+                    0: '#4A000A',
+                    1: '#8A0018',
+                    2: '#D90429', // Vivid Cherry
+                    ice: '#E0F7FA', // Ice White
+                },
+                gold: {
+                    0: '#FFD700', // Pure Gold
+                    1: 'rgba(255, 215, 0, 0.2)',
+                    2: 'rgba(255, 215, 0, 0.1)',
+                },
+                status: {
+                    ok: '#00F0FF', // Cyber Blue
+                    warn: '#FFB800',
+                    bad: '#FF2A6D',
+                    info: '#7000FF',
+                }
+            },
+            backgroundImage: {
+                'grid-pattern': "linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)",
+                'vignette': 'radial-gradient(circle at center, transparent 0%, #000000 130%)',
+                'scanline': 'linear-gradient(to bottom, transparent 50%, rgba(217, 4, 41, 0.05) 50%)',
+                'noise': "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"noiseFilter\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.85\" numOctaves=\"3\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23noiseFilter)\" opacity=\"0.04\"/%3E%3C/svg%3E')",
+            },
+            boxShadow: {
+                'soft': '0 10px 40px -10px rgba(0, 0, 0, 0.9)',
+                'glow': '0 0 30px rgba(217, 4, 41, 0.25)',
+                'ice-glow': '0 0 20px rgba(224, 247, 250, 0.15)',
+                'gold-glow': '0 0 25px rgba(255, 215, 0, 0.2)',
+                'inner-light': 'inset 0 1px 0 rgba(255,255,255,0.1)',
+            },
+            animation: {
+                'scanline': 'scanline 6s linear infinite',
+                'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                'glitch': 'glitch 1s linear infinite',
+                'terminal-blink': 'blink 1s step-end infinite',
+            },
+            keyframes: {
+                scanline: {
+                    '0%': { transform: 'translateY(-100%)' },
+                    '100%': { transform: 'translateY(100%)' },
+                },
+                glitch: {
+                    '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
+                    '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
+                    '62%': { transform: 'translate(0,0) skew(5deg)' },
+                },
+                blink: {
+                    '0%, 100%': { opacity: '1' },
+                    '50%': { opacity: '0' },
+                }
+            }
+          }
+        }
+      };
+    </script>
+    <style>
+      body {
+        background-color: #050505;
+        color: #EDEDED;
+        -webkit-font-smoothing: antialiased;
+        overflow: hidden;
+      }
+      
+      /* Cinematic Grain Overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.4;
+      }
+
+      /* Ultra Premium Scrollbar */
+      ::-webkit-scrollbar { width: 4px; height: 4px; }
+      ::-webkit-scrollbar-track { background: #050505; }
+      ::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+      ::-webkit-scrollbar-thumb:hover { background: #D90429; }
+      
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+
+      /* Utility for glassmorphism text readability */
+      .text-shadow { text-shadow: 0 1px 2px rgba(0,0,0,0.8); }
+      
+      /* Advanced Input Autofill Fix */
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover, 
+      input:-webkit-autofill:focus, 
+      input:-webkit-autofill:active{
+          -webkit-box-shadow: 0 0 0 30px #121214 inset !important;
+          -webkit-text-fill-color: white !important;
+          transition: background-color 5000s ease-in-out 0s;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.3",
+    "vite": "https://esm.sh/vite@^7.3.1"
+  }
+}
+</script>
+</head>
+  <body class="antialiased selection:bg-accent-2 selection:text-white">
+    <div id="root" class="h-screen overflow-hidden"></div>
+    <script type="module" src="index.tsx"></script>
+  </body>
+</html>
